@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}{% if object %}Edit Article{% else %}New Article{% endif %}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="card">
+        <h1 class="page-title">{% if object %}Edit Article{% else %}Write New Article{% endif %}</h1>
+        
+        <form method="post" class="form">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="form-group">
+                <label class="form-label">{{ field.label }}</label>
+                {{ field.errors }}
+                {{ field }}
+            </div>
+            {% endfor %}
+            
+            <div class="editor-toolbar">
+                <button type="submit" class="btn btn-primary">
+                    {% if object %}Save Changes{% else %}Publish Article{% endif %}
+                </button>
+                <a href="{% url 'blog-home' %}" class="btn btn-outline">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

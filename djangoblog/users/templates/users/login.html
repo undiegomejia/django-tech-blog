@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width: 400px;">
+    <div class="card">
+        <h1 class="page-title">Login</h1>
+        
+        <form method="post" class="form">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="form-group">
+                <label class="form-label">{{ field.label }}</label>
+                {{ field.errors }}
+                {{ field }}
+            </div>
+            {% endfor %}
+            
+            <div class="editor-toolbar" style="flex-direction: column; gap: 0.5rem;">
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+                <a href="{% url 'register' %}" class="btn btn-outline" style="width: 100%;">Create Account</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

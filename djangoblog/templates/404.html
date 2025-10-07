@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}404 - Page Not Found{% endblock %}
+
+{% block content %}
+<div class="error-page">
+    <div class="error-content">
+        <h1 class="error-title">404</h1>
+        <div class="error-divider"></div>
+        <h2 class="error-subtitle">Page Not Found</h2>
+        <p class="error-description">
+            Oops! The page you're looking for doesn't exist or has been moved.
+        </p>
+        <div class="error-actions">
+            <a href="{% url 'index' %}" class="btn btn-primary">
+                <span class="btn-icon">←</span>
+                Return Home
+            </a>
+            <a href="{% url 'blog-home' %}" class="btn btn-outline">
+                Browse Articles
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

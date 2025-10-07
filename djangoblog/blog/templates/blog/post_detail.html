@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}{{ object.title }}{% endblock %}
+
+{% block content %}
+<article class="container">
+    <div class="card">
+        <h1 class="page-title">{{ object.title }}</h1>
+        <div class="card-meta" style="margin-bottom: 2rem;">
+            <div class="author-info">
+                <div class="avatar-container">
+                    <img src="{{ object.author.profile.image.url }}" alt="{{ object.author.username }}" class="avatar">
+                </div>
+                <div>
+                    <a href="{% url 'profile' %}" class="author-name">{{ object.author.username }}</a>
+                    <div class="author-meta">
+                        Published on {{ object.created_at|date:'M d, Y' }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="line-height: 1.8;">
+            {{ object.content|linebreaks }}
+        </div>
+        
+        {% if user == object.author %}
+        <div class="editor-toolbar">
+            <a href="{% url 'post-edit' object.pk %}" class="btn btn-primary">Edit Article</a>
+            <a href="{% url 'post-delete' object.pk %}" class="btn btn-danger">Delete</a>
+        </div>
+        {% endif %}
+    </div>
+    
+    <div style="margin-top: 2rem;">
+        <a href="{% url 'blog-home' %}" class="btn btn-outline">&larr; Back to Articles</a>
+    </div>
+</article>
+{% endblock %}

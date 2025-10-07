@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="container">
+    <h1>Archive</h1>
+    {% for post in object_list %}
+      <div class="card mb-3">
+        <div class="card-body">
+          <h2><a href="{% url 'post-detail' post.pk %}">{{ post.title }}</a></h2>
+          <p>{{ post.content|truncatewords:30 }}</p>
+          <small>By {{ post.author }} on {{ post.created_at|date:'M d, Y' }}</small>
+        </div>
+      </div>
+    {% empty %}
+      <p>No posts in archive.</p>
+    {% endfor %}
+    <a href="{% url 'blog-home' %}" class="btn btn-secondary">Back to Blog</a>
+  </div>
+{% endblock %}
