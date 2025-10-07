@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Delete Article{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="card">
+        <h1 class="page-title">Delete Article</h1>
+        
+        <div class="danger-zone">
+            <h2 class="danger-zone-title">⚠️ Danger Zone</h2>
+            <p class="danger-zone-text">
+                You are about to delete the article "<strong>{{ object.title }}</strong>". 
+                This action cannot be undone. All content, comments, and associated data will be permanently removed.
+            </p>
+            
+            <form method="post">
+                {% csrf_token %}
+                <div style="display: flex; gap: 1rem;">
+                    <button type="submit" class="btn btn-danger">Confirm Delete</button>
+                    <a href="{% url 'post-detail' object.pk %}" class="btn btn-outline">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
