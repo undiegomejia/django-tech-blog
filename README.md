@@ -1,31 +1,61 @@
 # Django Tech Blog
 
-A blog website for sharing tech articles.
+A Django-powered blog application designed for technical content sharing. Built with Django 5.2.7 and Python 3.13, implementing class-based views, user authentication, and content management.
 
-## Project Layout
+## Technical Overview
+
+### Backend
+- Django 5.2.7 with SQLite3 database
+- Class-based views for content management
+- Django authentication system
+- Custom user profiles with image handling
+- Automated image optimization for uploads
+
+### Frontend
+- Responsive HTML5/CSS3 design
+- Clean UI with CSS custom properties
+- Optimized template inheritance
+- Static and media file handling
+
+## Project Structure
 
 ```
 djangoblog/
-├── blog/          # Blog features
-├── users/         # User accounts
-├── media/         # Uploaded files
-└── django_blog/   # Settings
+├── blog/              # Blog application
+│   ├── models.py      # Post model and relationships
+│   ├── views.py       # Class-based view controllers
+│   └── templates/     # Blog templates
+├── users/             # User management
+│   ├── models.py      # Profile model
+│   ├── forms.py       # Custom user forms
+│   └── views.py       # Authentication views
+├── media/             # User uploaded content
+└── django_blog/       # Core configuration
+    ├── settings.py    # Project settings
+    └── urls.py        # URL routing
 ```
 
-## How to Use
+## Features and Implementation
 
-### Users Can
-- Create accounts
-- Add profile pictures
-- Write and edit articles
-- View other users' posts
+### User System
+- Custom user registration and authentication
+- Profile management with image upload
+- Automatic image resizing (300x300px max)
+- Bio and personal information storage
 
-### Admins Can
-- Manage all content
-- Handle user accounts
-- Monitor site activity
+### Content Management
+- Class-based CRUD views for articles
+- Rich text editing capabilities
+- Archive system with date-based navigation
+- Author attribution and timestamps
 
-## Setup
+### Admin Interface
+- Django admin customization
+- User and content management
+- Media file handling
+- Site monitoring capabilities
+
+## Setup and Installation
 
 1. Clone the repository:
 ```bash
@@ -33,54 +63,41 @@ git clone https://github.com/undiegomejia/django-tech-blog.git
 cd django-tech-blog
 ```
 
-2. Create a virtual environment:
+2. Set up Python environment (3.13 required):
 ```bash
 python -m venv venv
+source venv/bin/activate  # Unix/macOS
+# or
+venv\Scripts\activate     # Windows
 ```
 
-3. Activate the virtual environment:
-- Windows:
-```bash
-venv\Scripts\activate
-```
-- Unix/MacOS:
-```bash
-source venv/bin/activate
-```
-
-4. Install required packages:
+3. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-5. Create environment variables file (.env):
-```env
-SECRET_KEY=your_secret_key_here
-DEBUG=True
-ALLOWED_HOSTS=localhost,127.0.0.1
+4. Configure environment:
+```bash
+cp .env.example .env
+# Edit .env with your settings
 ```
 
-6. Run database migrations:
+5. Database setup:
 ```bash
-python manage.py makemigrations
 python manage.py migrate
-```
-
-7. Create a superuser:
-```bash
 python manage.py createsuperuser
 ```
 
-8. Run the development server:
+6. Start development server:
 ```bash
 python manage.py runserver
 ```
 
-The application will be available at `http://127.0.0.1:8000/`
+Access the application at `http://127.0.0.1:8000`
 
 ## Questions?
 
-Open an issue on GitHub
+Open an issue on GitHub repository for support
 
 ---
-Made with Django
+Built with Django 5.2.7
